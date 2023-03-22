@@ -1,0 +1,7 @@
+<div class="header-cont">
+    <h1>Locked Achievements <mat-icon>lock</mat-icon></h1>
+</div>
+<app-achievement-filter></app-achievement-filter>
+<div fxLayout="row custom-row">
+    <app-achievement *ngFor="let achievement of this.achievementService.lockedAchievements" [achievement]=achievement [isLocked]=true [cardSize]=200></app-achievement>
+</div>

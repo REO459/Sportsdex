@@ -1,0 +1,34 @@
+<app-nav></app-nav>
+<div class= "row profile-pic-row">
+  <div class="col profile-pic-col">
+    <div class="profile-pic-cont" [ngStyle]="{'background-image': 'url(' + this.authServivce.selectedImage + ')', 'background-position': '50% 50%'}"></div>
+    <mat-icon class="settings-icon" (click)="goToSettings()">settings</mat-icon>
+    <p><b>Name: </b> {{this.authServivce.loggedInUser.firstname + ' ' +  this.authServivce.loggedInUser.lastname}}</p>
+    <p><b>Username: </b>{{this.authServivce.loggedInUser.username}}</p>
+    <p><b>Favorite Team: </b>{{this.authServivce.loggedInUser.favoriteteam}}</p>
+    <p><b>Email: </b>{{this.authServivce.loggedInUser.email}}</p>
+  </div>
+</div>
+<div class="row header-row">
+  <div class="col unlock-col">
+    <h1>Unlocked Achievements <mat-icon>lock_open</mat-icon></h1>
+  </div>
+  <div class="col lock-col">
+    <h1>Locked Achievements <mat-icon>lock</mat-icon></h1>
+  </div>
+</div>
+<div class="row achievement-cont">
+  <div class="col-6 unlocked-col" fxLayout="col">
+
+    <app-achievement *ngFor="let achievement of this.achievementService.unlockedAchievements" [achievement]=achievement
+    [isLocked]=false [cardSize]=200></app-achievement>
+  </div>
+  <div class="col-6 locked-col" fxLayout="col">
+    <app-achievement *ngFor="let achievement of this.achievementService.lockedAchievements" [achievement]=achievement
+    [isLocked]=true [cardSize]=200></app-achievement>
+  </div>
+</div>
+
+<div class="background">
+  <img src="assets/authhero.png" class="img">
+</div>
